@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{ ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import Sidebar from '../components/admin/Sidebar';
 
@@ -6,9 +6,10 @@ import Sidebar from '../components/admin/Sidebar';
  * AdminLayout serves as a wrapper component for all admin pages
  * It provides consistent layout with the sidebar and header
  */
-const AdminLayout = ({ children }) => {
+
+const AdminLayout = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
-  const pageTitles = {
+  const pageTitles: { [key: string]: string } = {
     '/admin/dashboard': 'Dashboard Overview',
     '/admin/users': 'Users Management',
     '/admin/inquiries': 'Inquiries Management',
