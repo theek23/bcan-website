@@ -3,9 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { Calendar, Tag, ArrowLeft, Clock, Share2, Bookmark, MessageSquare } from 'lucide-react';
 import { blogPosts } from '../../data/blog';
 
-interface BlogParams {
-  id: string;
-}
 
 interface Author {
   name: string;
@@ -25,7 +22,7 @@ interface BlogPost {
 }
 
 const BlogView = () => {
-  const { id } = useParams<BlogParams>();
+  const { id } = useParams();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -206,7 +203,7 @@ const BlogView = () => {
           <div className="mb-10 p-6 bg-gray-50 rounded-lg border border-gray-100">
             <h3 className="font-medium text-lg text-gray-900 mb-3">Table of Contents</h3>
             <ul className="space-y-1 text-gray-600 divide-y divide-gray-200">
-              {post.content.match(/<h[23][^>]*>(.*?)<\/h[23]>/g)?.map((match, index) => {
+              {post.content.match(/<h[23][^>]*>(.*?)<\/h[23]>/g)?.map((match) => {
                 const text = match.replace(/<\/?h[23][^>]*>/g, '');
                 const id = text.toLowerCase().replace(/\s+/g, '-');
                 const isH3 = match.includes('h3');
@@ -423,7 +420,7 @@ const BlogView = () => {
       </div>
 
       {/* Add CSS for subtle zoom animation */}
-      <style jsx>{`
+      <style>{`
         @keyframes subtle-zoom {
           0% {
             transform: scale(1);

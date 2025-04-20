@@ -25,22 +25,30 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
-    }`}>
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0">
-            <Link to="/" className="text-2xl font-bold text-pink-600">BCAN</Link>
+            <Link to="/">
+              <img
+                src="/bcan-logo.png"
+                alt="BCAN Logo"
+                className="h-24 w-auto"
+              />
+            </Link>
           </div>
-          
+
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
                 className={`text-gray-700 hover:text-pink-600 transition-colors duration-200 ${
-                  location.pathname === link.href ? 'text-pink-600' : ''
+                  location.pathname === link.href ? "text-pink-600" : ""
                 }`}
               >
                 {link.name}
@@ -68,7 +76,7 @@ const Navigation = () => {
                 key={link.name}
                 to={link.href}
                 className={`block px-3 py-2 text-gray-700 hover:text-pink-600 transition-colors duration-200 ${
-                  location.pathname === link.href ? 'text-pink-600' : ''
+                  location.pathname === link.href ? "text-pink-600" : ""
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
