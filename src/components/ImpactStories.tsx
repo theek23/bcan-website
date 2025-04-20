@@ -1,4 +1,3 @@
-import React from 'react';
 import { Heart, Star, Shield } from 'lucide-react';
 import FadeIn from './animations/FadeIn';
 
@@ -42,10 +41,10 @@ const ImpactStories = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {stories.map((story, index) => (
             <FadeIn key={index} direction="up" delay={index * 0.2}>
-              <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+              <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow h-full flex flex-col">
                 <div className="mb-4">{story.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{story.title}</h3>
-                <p className="text-gray-600 mb-4">{story.description}</p>
+                <p className="text-gray-600 mb-4 flex-grow">{story.description}</p>
                 <div className="inline-flex items-center px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-sm">
                   {story.impact}
                 </div>

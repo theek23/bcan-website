@@ -1,4 +1,3 @@
-import React from 'react';
 import { Activity, Battery, Wifi, Smartphone } from 'lucide-react';
 
 const ProductShowcase = () => {
@@ -10,9 +9,9 @@ const ProductShowcase = () => {
     },
     {
       icon: <Battery className="w-6 h-6 text-pink-600" />,
-      title: "Long Battery Life",
-      description: "Up to 7 days of continuous use on a single charge"
-    },
+      title: "Self-Charging",
+      description: "Powered by motion or body heat for uninterrupted use",
+    },    
     {
       icon: <Wifi className="w-6 h-6 text-pink-600" />,
       title: "Wireless Connectivity",
@@ -32,7 +31,7 @@ const ProductShowcase = () => {
           <div className="space-y-8">
             <h2 className="text-3xl font-bold text-gray-900">BCan Bra: The Future of Early Detection</h2>
             <p className="text-xl text-gray-600">
-              Our revolutionary smart garment combines comfort with cutting-edge technology to provide continuous monitoring and early detection of breast abnormalities.
+              Our revolutionary smart garment combines comfort with patent pending technology to provide continuous monitoring and early detection of breast abnormalities.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

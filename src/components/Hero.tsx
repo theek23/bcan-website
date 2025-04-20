@@ -1,5 +1,4 @@
-import React from 'react';
-import { ArrowRight, Heart } from 'lucide-react';
+import { ArrowRight, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
@@ -9,16 +8,16 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="inline-flex items-center px-4 py-2 bg-pink-100 rounded-full">
-              <Heart size={16} className="text-pink-600 mr-2" />
-              <span className="text-sm text-pink-800">Revolutionizing Healthcare</span>
+              <Cpu size={16} className="text-pink-600 mr-2" />
+              <span className="text-sm text-pink-800">Smart</span>
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
-              Empowering Early Detection with Cutting-Edge AI Technology
+              Ultimate Solution For Breast Cancer Early Detection
             </h1>
             
             <p className="text-xl text-gray-600">
-              Transform breast cancer detection with our innovative BCan Bra, powered by advanced AI for earlier, more accurate diagnosis.
+             Transform breast cancer detection with our innovative BCan Bra, powered by advanced AI and patent-pending technology merged with AI for earlier, more accurate diagnosis.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -47,6 +46,17 @@ const Hero = () => {
               </div>
             </div>
           </div>
+        </div>
+        
+        {/* Updated donate button with smaller size and increased margin-top */}
+        <div className="flex justify-center mt-12">
+          <Link 
+            to="/contact?form=feedback"
+            className="px-8 py-4 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors duration-200 flex items-center justify-center text-sm"
+          >
+            Donate Now
+            <ArrowRight size={16} className="ml-2" />
+          </Link>
         </div>
       </div>
     </div>

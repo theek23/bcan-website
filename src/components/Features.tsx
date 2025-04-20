@@ -1,4 +1,3 @@
-import React from 'react';
 import { Brain, Shield, Clock, Award } from 'lucide-react';
 import FadeIn from './animations/FadeIn';
 
@@ -21,9 +20,9 @@ const Features = () => {
     },
     {
       icon: <Award className="w-8 h-8 text-pink-600" />,
-      title: 'Clinically Validated',
-      description: 'Proven accuracy through extensive clinical trials',
-    },
+      title: 'Self-Charging & Wireless',
+      description: 'Hassle-free usage with wireless design and self-charging capability',
+    },    
   ];
 
   return (
@@ -43,12 +42,12 @@ const Features = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <FadeIn key={index} direction="up" delay={index * 0.1}>
-              <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+              <div className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 h-full flex flex-col">
                 <div className="mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <p className="text-gray-600 flex-grow">{feature.description}</p>
               </div>
             </FadeIn>
           ))}
