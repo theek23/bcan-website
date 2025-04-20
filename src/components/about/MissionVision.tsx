@@ -12,9 +12,7 @@ const MissionVision = () => {
               <h2 className="text-2xl font-bold text-gray-900">Our Mission</h2>
             </div>
             <p className="text-gray-600 leading-relaxed">
-              To revolutionize early breast cancer detection through cutting-edge health technology, 
-              ensuring that life-threatening conditions like breast cancer are identified and treated 
-              at their earliest stages.
+            At BCAN Solutions, we are dedicated to transforming women’s healthcare through innovative technology. Our mission is to develop accessible, reliable, and research-driven solutions that empower women to take control of their health, enabling early detection and proactive care. Through our work, we strive to help women live more and live better.
             </p>
           </div>
 
@@ -24,8 +22,7 @@ const MissionVision = () => {
               <h2 className="text-2xl font-bold text-gray-900">Our Vision</h2>
             </div>
             <p className="text-gray-600 leading-relaxed">
-              To transform global healthcare by leveraging innovative AI-powered solutions 
-              and empowering individuals to live healthier, longer lives.
+            We envision a world where every woman has the knowledge, tools, and confidence to safeguard her health. By pioneering advancements in MedTech, raising awareness, and breaking barriers to early detection, BCAN Solutions is committed to redefining women’s healthcare—creating a future where preventable diseases no longer go unnoticed.
             </p>
           </div>
         </div>
