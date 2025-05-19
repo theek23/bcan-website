@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { inquiryService, CreateInquiryData } from "../services/inquiry.service";
+import { InquiryType } from "../types/inquiry.types";
 
 interface ContactFormData {
   name: string;
@@ -9,33 +11,60 @@ interface ContactFormData {
 
 export const useContactForm = () => {
   const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+    setError("");
+    setSuccess(false);
+
     try {
-      // Add your form submission logic here
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
-      console.log('Form submitted:', formData);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      console.error('Error submitting form:', error);
+      const inquiryData: CreateInquiryData = {
+        type: InquiryType.GENERAL,
+        ...formData,
+      };
+
+      await inquiryService.createInquiry(inquiryData);
+      setSuccess(true);
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (err: unknown) {
+      const errorMessage =
+        err instanceof Error ? err.message : "Failed to send message";
+      setError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  return { formData, handleChange, handleSubmit, isSubmitting };
+  return {
+    formData,
+    handleChange,
+    handleSubmit,
+    isSubmitting,
+    error,
+    success,
+  };
 };

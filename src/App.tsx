@@ -52,29 +52,29 @@ function App() {
       <Route path="/admin/signup" element={<Signup />} />
       
       {/* Protected Admin Routes */}
-      {/* <Route path="/admin/dashboard" element={
-        <RequireAuth>
-          <Dashboard />
-        </RequireAuth>
-      } />
-      <Route path="/admin/users" element={
-        <RequireAuth>
-          <Users />
-        </RequireAuth>
-      } />
-      <Route path="/admin/inquiries" element={
-        <RequireAuth>
-          <Inquiries />
-        </RequireAuth>
-      } />
-      <Route path="/admin/content" element={
-        <RequireAuth>
-          <Content />
-        </RequireAuth>
-      } /> */}
-      
-      
       <Route path="/admin/dashboard" element={
+        <RequireAuth>
+          <Dashboard />
+        </RequireAuth>
+      } />
+      <Route path="/admin/users" element={
+        <RequireAuth>
+          <Users />
+        </RequireAuth>
+      } />
+      <Route path="/admin/inquiries" element={
+        <RequireAuth>
+          <Inquiries />
+        </RequireAuth>
+      } />
+      <Route path="/admin/content" element={
+        <RequireAuth>
+          <Content />
+        </RequireAuth>
+      } />
+      
+      
+      {/* <Route path="/admin/dashboard" element={
           <Dashboard />
       } />
       <Route path="/admin/users" element={
@@ -85,7 +85,7 @@ function App() {
       } />
       <Route path="/admin/content" element={
           <Content />
-      } />
+      } /> */}
 
       {/* Catch-all route - redirect to home */}
       <Route path="*" element={<Navigate to="/" replace />} />

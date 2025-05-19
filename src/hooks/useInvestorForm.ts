@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { inquiryService, CreateInquiryData } from "../services/inquiry.service";
+import { InquiryType } from "../types/inquiry.types";
 
 interface InvestorFormData {
   name: string;
@@ -6,38 +8,78 @@ interface InvestorFormData {
   company: string;
   investmentRange: string;
   message: string;
+  additionalInfo?: string;
 }
 
 export const useInvestorForm = () => {
   const [formData, setFormData] = useState<InvestorFormData>({
-    name: '',
-    email: '',
-    company: '',
-    investmentRange: '',
-    message: '',
+    name: "",
+    email: "",
+    company: "",
+    investmentRange: "",
+    message: "",
+    additionalInfo: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+    setError("");
+    setSuccess(false);
+
     try {
-      // Add your form submission logic here
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated API call
-      console.log('Investor form submitted:', formData);
-      setFormData({ name: '', email: '', company: '', investmentRange: '', message: '' });
-    } catch (error) {
-      console.error('Error submitting form:', error);
+      const inquiryData: CreateInquiryData = {
+        type: InquiryType.INVESTOR,
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        investmentRange: formData.investmentRange,
+        message: formData.message,
+        additionalInfo: formData.additionalInfo,
+      };
+
+      await inquiryService.createInquiry(inquiryData);
+      setSuccess(true);
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        investmentRange: "",
+        message: "",
+        additionalInfo: "",
+      });
+    } catch (err: unknown) {
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : "Failed to submit investor inquiry";
+      setError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  return { formData, handleChange, handleSubmit, isSubmitting };
+  return {
+    formData,
+    handleChange,
+    handleSubmit,
+    isSubmitting,
+    error,
+    success,
+  };
 };
