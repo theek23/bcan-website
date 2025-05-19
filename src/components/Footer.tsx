@@ -17,7 +17,8 @@ const Footer = () => {
     { name: 'Clinical Trials', path: '/research#clinical-trials' },
     { name: 'Research Partners', path: '/research#collaborations' },
     { name: 'Our Mission', path: '/about#mission' },
-    { name: 'Core Values', path: '/about#values' }
+    { name: 'Core Values', path: '/about#values' },
+    { name: 'Admin Login', path: '/admin/login' },
   ];
 
   const socialLinks = [
