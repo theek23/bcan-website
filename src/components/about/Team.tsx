@@ -4,23 +4,23 @@ import { Users } from 'lucide-react';
 const Team = () => {
   const teamMembers = [
     {
-      name: "Sarah Johnson",
-      title: "Chief Executive Officer",
-      image: "/person1.jpg",
-    },
-    {
-      name: "Michael Chen",
-      title: "Chief Technology Officer",
+      name: "Angelo Perera",
+      title: "Chef Executive Officer",
       image: "/person2.jpg",
     },
     {
-      name: "Amara Patel",
-      title: "Head of Research",
+      name: "Mihiri Alwis",
+      title: "Co Founder",
+      image: "/person1.jpg",
+    },
+    {
+      name: "Tharusha Perera",
+      title: "Co Founder",
       image: "/person3.jpg",
     },
     {
-      name: "David Rodriguez",
-      title: "Head of Product Development",
+      name: "Savinda Kommalage",
+      title: "Co Founder",
       image: "/person4.jpg",
     },
   ];
