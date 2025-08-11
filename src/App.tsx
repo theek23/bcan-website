@@ -1,36 +1,37 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import type { ReactNode } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // Front-end/Public Pages
-import Home from './pages/Home';
-import About from './pages/About';
-import Research from './pages/Research';
-import Products from './pages/Products';
-import ProductDetail from './pages/ProductDetail';
-import Blog from './pages/Blog';
-import Contact from './pages/Contact';
+import Home from "./pages/Home";
+import LaunchCountdown from "./pages/LaunchCountdown";
+import About from "./pages/About";
+import Research from "./pages/Research";
+import Products from "./pages/Products";
+import ProductDetail from "./pages/ProductDetail";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
 
 // Admin Authentication Pages
-import Login from './pages/admin/Login';
-import Signup from './pages/admin/Signup';
+import Login from "./pages/admin/Login";
+import Signup from "./pages/admin/Signup";
 
 // Admin Dashboard Pages
-import Dashboard from './pages/admin/Dashboard';
-import Users from './pages/admin/Users';
-import Inquiries from './pages/admin/Inquiries';
-import Content from './pages/admin/Content';
-import BlogView from './pages/BlogView';
+import Dashboard from "./pages/admin/Dashboard";
+import Users from "./pages/admin/Users";
+import Inquiries from "./pages/admin/Inquiries";
+import Content from "./pages/admin/Content";
+import BlogView from "./pages/BlogView";
 
 // Auth Guard component (replace with your actual auth logic)
-const RequireAuth = ({ children }) => {
+const RequireAuth = ({ children }: { children: ReactNode }) => {
   // This is a simple example - implement your actual authentication check here
-  const isAuthenticated = localStorage.getItem('auth_token');
-  
+  const isAuthenticated = localStorage.getItem("auth_token");
+
   if (!isAuthenticated) {
     // Redirect to login page if not authenticated
     return <Navigate to="/admin/login" replace />;
   }
-  
+
   return children;
 };
 
@@ -38,7 +39,9 @@ function App() {
   return (
     <Routes>
       {/* Public/Front-end Routes */}
-      <Route path="/" element={<Home />} />
+      {/* Temporarily set LaunchCountdown as the root. Keep original Home at /home for easy rollback. */}
+      <Route path="/" element={<LaunchCountdown />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/research" element={<Research />} />
       <Route path="/products" element={<Products />} />
@@ -46,34 +49,45 @@ function App() {
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:id" element={<BlogView />} />
       <Route path="/contact" element={<Contact />} />
-      
+
       {/* Admin Authentication Routes */}
       <Route path="/admin/login" element={<Login />} />
       <Route path="/admin/signup" element={<Signup />} />
-      
+
       {/* Protected Admin Routes */}
-      <Route path="/admin/dashboard" element={
-        <RequireAuth>
-          <Dashboard />
-        </RequireAuth>
-      } />
-      <Route path="/admin/users" element={
-        <RequireAuth>
-          <Users />
-        </RequireAuth>
-      } />
-      <Route path="/admin/inquiries" element={
-        <RequireAuth>
-          <Inquiries />
-        </RequireAuth>
-      } />
-      <Route path="/admin/content" element={
-        <RequireAuth>
-          <Content />
-        </RequireAuth>
-      } />
-      
-      
+      <Route
+        path="/admin/dashboard"
+        element={
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/users"
+        element={
+          <RequireAuth>
+            <Users />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/inquiries"
+        element={
+          <RequireAuth>
+            <Inquiries />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/content"
+        element={
+          <RequireAuth>
+            <Content />
+          </RequireAuth>
+        }
+      />
+
       {/* <Route path="/admin/dashboard" element={
           <Dashboard />
       } />
