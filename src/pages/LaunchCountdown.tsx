@@ -5,7 +5,7 @@ const LaunchCountdown = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "BCAN — Loading";
+    document.title = "BCAN Solutions — Smart Tech For Human Wellness";
   }, []);
 
   useEffect(() => {

@@ -11,6 +11,9 @@ import ProductDetail from "./pages/ProductDetail";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 
+// Components
+import BreastCancerPopup from "./components/BreastCancerPopup";
+
 // Admin Authentication Pages
 import Login from "./pages/admin/Login";
 import Signup from "./pages/admin/Signup";
@@ -37,73 +40,78 @@ const RequireAuth = ({ children }: { children: ReactNode }) => {
 
 function App() {
   return (
-    <Routes>
-      {/* Public/Front-end Routes */}
-      {/* Temporarily set LaunchCountdown as the root. Keep original Home at /home for easy rollback. */}
-      <Route path="/" element={<LaunchCountdown />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/research" element={<Research />} />
-      <Route path="/products" element={<Products />} />
-      <Route path="/products/:id" element={<ProductDetail />} />
-      <Route path="/blog" element={<Blog />} />
-      <Route path="/blog/:id" element={<BlogView />} />
-      <Route path="/contact" element={<Contact />} />
+    <>
+      <Routes>
+        {/* Public/Front-end Routes */}
+        {/* Temporarily set LaunchCountdown as the root. Keep original Home at /home for easy rollback. */}
+        <Route path="/" element={<LaunchCountdown />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/research" element={<Research />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogView />} />
+        <Route path="/contact" element={<Contact />} />
 
-      {/* Admin Authentication Routes */}
-      <Route path="/admin/login" element={<Login />} />
-      <Route path="/admin/signup" element={<Signup />} />
+        {/* Admin Authentication Routes */}
+        <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin/signup" element={<Signup />} />
 
-      {/* Protected Admin Routes */}
-      <Route
-        path="/admin/dashboard"
-        element={
-          <RequireAuth>
+        {/* Protected Admin Routes */}
+        <Route
+          path="/admin/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <RequireAuth>
+              <Users />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/admin/inquiries"
+          element={
+            <RequireAuth>
+              <Inquiries />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/admin/content"
+          element={
+            <RequireAuth>
+              <Content />
+            </RequireAuth>
+          }
+        />
+
+        {/* <Route path="/admin/dashboard" element={
             <Dashboard />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/admin/users"
-        element={
-          <RequireAuth>
+        } />
+        <Route path="/admin/users" element={
             <Users />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/admin/inquiries"
-        element={
-          <RequireAuth>
+        } />
+        <Route path="/admin/inquiries" element={
             <Inquiries />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/admin/content"
-        element={
-          <RequireAuth>
+        } />
+        <Route path="/admin/content" element={
             <Content />
-          </RequireAuth>
-        }
-      />
+        } /> */}
 
-      {/* <Route path="/admin/dashboard" element={
-          <Dashboard />
-      } />
-      <Route path="/admin/users" element={
-          <Users />
-      } />
-      <Route path="/admin/inquiries" element={
-          <Inquiries />
-      } />
-      <Route path="/admin/content" element={
-          <Content />
-      } /> */}
-
-      {/* Catch-all route - redirect to home */}
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+        {/* Catch-all route - redirect to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      
+      {/* Global popup component */}
+      <BreastCancerPopup />
+    </>
   );
 }
 

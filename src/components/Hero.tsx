@@ -1,112 +1,50 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, Cpu } from "lucide-react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import ModelViewer from "./ModelViewer";
-
-// Live Breast Cancer Death Counter (Global)
-// Source rate: WHO estimates ~670,000 breast cancer deaths worldwide in 2022.
-// We convert that to a per-second rate and animate a counter that estimates deaths since the page loaded.
-
-const ANNUAL_DEATHS = 670_000; // Update when newer WHO/GLOBOCAN numbers are published
-const PER_SECOND = ANNUAL_DEATHS / (365 * 24 * 60 * 60);
-
-function formatNumber(n: number) {
-  return new Intl.NumberFormat(undefined, {
-    maximumFractionDigits: 0,
-  }).format(n);
-}
-
-function useNow() {
-  const [now, setNow] = useState(() => Date.now());
-  useEffect(() => {
-    let raf: number;
-    const tick = () => {
-      setNow(Date.now());
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-  return now;
-}
-
-/* COMMENTED OUT FOR NEW UPDATE - BreastCancerDeathCounter component
-const BreastCancerDeathCounter: React.FC = () => {
-  const now = useNow();
-
-  const perMinute = PER_SECOND * 60;
-  const perHour = PER_SECOND * 3600;
-  const perDay = PER_SECOND * 86400;
-
-  const [display, setDisplay] = useState(0);
-  const lastNow = useRef<number>(now);
-  useEffect(() => {
-    const dt = Math.max(0, (now - lastNow.current) / 1000);
-    lastNow.current = now;
-    setDisplay((d) => d + dt * PER_SECOND);
-  }, [now]);
-
-  const stats = useMemo(
-    () => [
-      { label: "per minute", value: perMinute },
-      { label: "per hour", value: perHour },
-      { label: "per day", value: perDay },
-      { label: "per year (est.)", value: ANNUAL_DEATHS },
-    ],
-    [perMinute, perHour, perDay]
-  );
-
-  return (
-    <div className="space-y-4">
-      <div className="grid place-items-center">
-        <motion.div
-          initial={{ scale: 0.98 }}
-          animate={{ scale: [1, 1.02, 1] }}
-          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-          className="bg-white text-black rounded-2xl shadow-2xl px-6 py-6 md:px-8 md:py-8 w-full"
-        >
-          <div className="text-center">
-            <div className="text-xs uppercase tracking-widest text-black/60 mb-1">
-              Estimated deaths since page load
-            </div>
-            <div className="text-4xl md:text-5xl font-black tabular-nums">
-              {formatNumber(Math.floor(display))}
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      <div className="grid gap-3 sm:grid-cols-2">
-        {stats.map((s) => (
-          <div
-            key={s.label}
-            className="rounded-2xl border border-black/10 bg-black/5 p-3"
-          >
-            <div className="text-sm text-gray-700">{s.label}</div>
-            <div className="text-xl font-bold tabular-nums text-gray-900">
-              {s.label.includes("year")
-                ? formatNumber(Number(s.value))
-                : s.value.toFixed(2)}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="text-xs text-gray-600">
-        Method: Converts an annual global estimate to a per-second rate for
-        awareness. Source: WHO/GLOBOCAN 2022 (~670,000 deaths). Update when new
-        figures are released.
-      </div>
-    </div>
-  );
-};
-*/
+import React from "react";
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <div className="min-h-screen flex items-center bg-gradient-to-br from-pink-50 to-blue-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div className="min-h-screen flex items-center relative overflow-hidden">
+      {/* Animated Background with Medical Theme */}
+      <div className="absolute inset-0 z-0">
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-pink-25 to-white"></div>
+        
+        {/* Animated orbs with stronger visibility and custom animation */}
+        <style>{`
+          @keyframes float-pulse {
+            0%, 100% { transform: scale(1) translateY(0px); opacity: 0.35; }
+            50% { transform: scale(1.1) translateY(-20px); opacity: 0.55; }
+          }
+          @keyframes float-pulse-2 {
+            0%, 100% { transform: scale(1) translateY(0px); opacity: 0.4; }
+            50% { transform: scale(1.15) translateY(-25px); opacity: 0.6; }
+          }
+          @keyframes float-pulse-3 {
+            0%, 100% { transform: scale(1) translateY(0px); opacity: 0.45; }
+            50% { transform: scale(1.2) translateY(-30px); opacity: 0.65; }
+          }
+          .orb-1 { animation: float-pulse 6s ease-in-out infinite; }
+          .orb-2 { animation: float-pulse-2 7s ease-in-out infinite 2s; }
+          .orb-3 { animation: float-pulse-3 8s ease-in-out infinite 4s; }
+        `}</style>
+        <div className="orb-1 absolute top-20 left-10 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="orb-2 absolute top-40 right-10 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="orb-3 absolute -bottom-8 left-1/2 w-full h-96 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        
+        {/* Subtle grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(236, 72, 153, .05) 25%, rgba(236, 72, 153, .05) 26%, transparent 27%, transparent 74%, rgba(236, 72, 153, .05) 75%, rgba(236, 72, 153, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(236, 72, 153, .05) 25%, rgba(236, 72, 153, .05) 26%, transparent 27%, transparent 74%, rgba(236, 72, 153, .05) 75%, rgba(236, 72, 153, .05) 76%, transparent 77%, transparent)',
+            backgroundSize: '50px 50px'
+          }}
+        ></div>
+        
+
+      </div>
+
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
         <div className="flex justify-center">
           <div className="max-w-4xl text-center space-y-8">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
@@ -120,31 +58,19 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/about"
-                className="px-8 py-4 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors duration-200 flex items-center justify-center"
-              >
+              <button className="px-8 py-4 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors duration-200 flex items-center justify-center">
                 Learn More
                 <ArrowRight size={20} className="ml-2" />
-              </Link>
-              <Link
-                to="/contact?form=investor"
-                className="px-8 py-4 border-2 border-pink-600 text-pink-600 rounded-lg hover:bg-pink-50 transition-colors duration-200 flex items-center justify-center"
-              >
+              </button>
+              <button className="px-8 py-4 border-2 border-pink-600 text-pink-600 rounded-lg hover:bg-pink-50 transition-colors duration-200 flex items-center justify-center">
                 Invest in Us
                 <ArrowRight size={20} className="ml-2" />
-              </Link>
-              <Link
-                to="/contact?form=investor"
-                className="px-8 py-4 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors duration-200 flex items-center justify-center"
-              >
+              </button>
+              <button className="px-8 py-4 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors duration-200 flex items-center justify-center">
                 Donate now
                 <ArrowRight size={20} className="ml-2" />
-              </Link>
+              </button>
             </div>
-
-            {/* COMMENTED OUT FOR NEW UPDATE - BreastCancerDeathCounter usage */}
-            {/* <BreastCancerDeathCounter /> */}
           </div>
 
           {/* COMMENTED OUT - 3D Model Section */}
