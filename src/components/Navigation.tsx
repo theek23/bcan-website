@@ -35,7 +35,7 @@ const Navigation = () => {
           <div className="flex-shrink-0">
             <Link to="/">
               <img
-                src="/bcan-logo.png"
+                src="/logo-2.png"
                 alt="BCAN Logo"
                 className="h-24 w-auto"
               />

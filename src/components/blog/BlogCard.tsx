@@ -20,8 +20,8 @@ interface BlogCardProps {
 const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   return (
     <article className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-      <img 
-        src={post.image} 
+      <img
+        src={post.image}
         alt={post.title}
         className="w-full h-48 object-cover rounded-t-xl"
       />
@@ -37,14 +37,17 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           </span>
         </div>
         <h3 className="text-xl font-semibold text-gray-900 mb-2">
-          <Link to={`/blog/${post.id}`} className="hover:text-pink-600">
+          <Link
+            to={`/blog/${encodeURIComponent(post.id)}`}
+            className="hover:text-pink-600"
+          >
             {post.title}
           </Link>
         </h3>
         <p className="text-gray-600 mb-4">{post.excerpt}</p>
         <div className="flex items-center">
-          <img 
-            src={post.author.avatar} 
+          <img
+            src={post.author.avatar}
             alt={post.author.name}
             className="w-8 h-8 rounded-full mr-3"
           />

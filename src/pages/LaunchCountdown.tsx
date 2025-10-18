@@ -40,9 +40,9 @@ const LaunchCountdown = () => {
       <div className="relative flex min-h-screen flex-col items-center justify-center px-4 md:px-6 py-12 md:py-16">
         {/* Logo */}
         <img
-          src="/bcan-logo.png"
+          src="/logo-2.png"
           alt="BCAN"
-          className="h-20 sm:h-24 md:h-28 mb-8 md:mb-10 opacity-95"
+          className="h-32sm:h-40 md:h-52 mb-8 md:mb-10 opacity-95"
         />
       </div>
 

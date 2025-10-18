@@ -21,18 +21,18 @@ const BlogGrid = () => {
               onClick={() => setSelectedCategory(category)}
               className={`px-4 py-2 rounded-full text-sm ${
                 selectedCategory === category
-                  ? 'bg-pink-600 text-white'
-                  : 'bg-white text-gray-600 hover:bg-gray-100'
+                  ? "bg-pink-600 text-white"
+                  : "bg-white text-gray-600 hover:bg-gray-100"
               }`}
             >
               {category}
             </button>
           ))}
         </div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map((post) => (
-            <BlogCard key={post.id} post={post} />
+            <BlogCard key={encodeURIComponent(post.id)} post={post} />
           ))}
         </div>
       </div>

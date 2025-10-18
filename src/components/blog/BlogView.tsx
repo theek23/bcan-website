@@ -40,7 +40,8 @@ const BlogView = () => {
 
   useEffect(() => {
     // Find the current post
-    const currentPost = blogPosts.find(post => post.id === id);
+    const decodedId = id ? decodeURIComponent(id) : "";
+    const currentPost = blogPosts.find((post) => post.id === decodedId);
     
     if (currentPost) {
       // Calculate reading time

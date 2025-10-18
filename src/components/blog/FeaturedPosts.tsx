@@ -11,8 +11,8 @@ const FeaturedPosts = () => {
           {featuredPosts.slice(0, 2).map((post) => (
             <div key={post.id} className="relative group">
               <div className="relative h-96 rounded-xl overflow-hidden">
-                <img 
-                  src={post.image} 
+                <img
+                  src={post.image}
                   alt={post.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
                 />
@@ -24,8 +24,8 @@ const FeaturedPosts = () => {
                 </span>
                 <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
                 <p className="text-gray-200 mb-4">{post.excerpt}</p>
-                <Link 
-                  to={`/blog/${post.id}`}
+                <Link
+                  to={`/blog/${encodeURIComponent(post.id)}`}
                   className="inline-flex items-center text-white hover:text-pink-200"
                 >
                   Read More <ArrowRight size={16} className="ml-2" />
