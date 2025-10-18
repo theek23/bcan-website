@@ -3,35 +3,35 @@ import { Calendar, Award, TestTube2, Users, Heart } from 'lucide-react';
 const Timeline = () => {
   const milestones = [
     {
-      year: '2019',
+      year: '2024',
       title: 'Company Founded',
       description:
         'BCAN Solutions established with a mission to revolutionize breast cancer detection',
       icon: <Calendar className="w-6 h-6" />,
     },
     {
-      year: '2020',
+      year: '2025',
       title: 'First Patent',
       description:
         'Secured patent for our innovative AI-powered detection technology',
       icon: <Award className="w-6 h-6" />,
     },
     {
-      year: '2021',
+      year: '2026',
       title: 'Clinical Trials',
       description:
         'Successfully completed first phase of clinical trials with 95% accuracy',
       icon: <TestTube2 className="w-6 h-6" />,
     },
     {
-      year: '2022',
+      year: '2027',
       title: 'Global Expansion',
       description:
         'Expanded operations to 10 countries, helping thousands of women',
       icon: <Users className="w-6 h-6" />,
     },
     {
-      year: '2023',
+      year: '2027',
       title: 'FDA Approval',
       description: 'Received FDA approval for BCan Bra technology',
       icon: <Heart className="w-6 h-6" />,
