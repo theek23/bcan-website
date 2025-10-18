@@ -43,8 +43,14 @@ const Features = () => {
             <FadeIn direction="up" delay={0.1}>
               <div className="relative">
                 <div className="w-full h-[500px] rounded-2xl bg-gradient-to-br from-pink-200 to-blue-200">
-                  <div className="w-full h-[500px] rounded-xl bg-gradient-to-br from-pink-100 to-blue-100">
-                    <ModelViewer />
+                  <div className="w-full h-[500px] rounded-xl bg-gradient-to-br from-pink-100 to-blue-100 flex items-center justify-center">
+                    {/* 3D Model commented out - replaced with static image */}
+                    {/* <ModelViewer /> */}
+                    <img
+                      src="/bcan-bra.png"
+                      alt="BCan Bra Product"
+                      className="h-[440px] md:h-[460px] w-auto object-contain"
+                    />
                   </div>
                 </div>
               </div>

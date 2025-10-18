@@ -118,16 +118,18 @@ const ProblemStatement = () => {
           {/* Right side - YouTube Video */}
           <div className="space-y-6">
             <div>
-              <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
+              <div
+                className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden shadow-lg"
+                style={{ paddingTop: "56.25%" }}
+              >
                 <iframe
                   className="absolute inset-0 w-full h-full"
-                  src="https://drive.google.com/file/d/1ec8XN8zHJZapFSFTb2KmJGRYWhfAUn9E/view?usp=sharing"
+                  src="https://drive.google.com/file/d/1ec8XN8zHJZapFSFTb2KmJGRYWhfAUn9E/preview"
                   title="Breast Cancer Awareness Video"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
-                
               </div>
               <p className="text-sm text-gray-600 mt-4">
                 Watch how early detection can save lives and why the Bcan Bra
