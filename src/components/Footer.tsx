@@ -80,7 +80,11 @@ const Footer = () => {
               to="/"
               className="inline-block text-2xl font-bold text-pink-600 hover:text-pink-700 transition-colors"
             >
-              BCAN
+              <img
+                src="/logo-2.png"
+                alt="BCAN Logo"
+                className="h-24 w-auto"
+              />
             </Link>
             <p className="mt-4 text-gray-600 text-sm md:text-base">
               Revolutionizing breast cancer detection through innovative
