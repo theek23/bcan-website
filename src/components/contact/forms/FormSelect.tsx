@@ -10,9 +10,9 @@ const FormSelect = ({ name, options, ...props }: FormSelectProps) => {
     <select
       {...props}
       name={name}
-      className="block w-full px-4 py-3 rounded-lg border-2 border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 transition-colors"
+      className="block w-full px-4 py-2.5 rounded-lg border-2 border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 transition-colors"
     >
-      {options.map(option => (
+      {options.map((option) => (
         <option key={option.value} value={option.value}>
           {option.label}
         </option>

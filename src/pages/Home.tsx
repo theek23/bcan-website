@@ -2,11 +2,12 @@ import FadeIn from '../components/animations/FadeIn';
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
-import ProductShowcase from '../components/ProductShowcase';
-import ImpactStories from '../components/ImpactStories';
-import SectionPreviews from '../components/SectionPreviews';
-import Timeline from '../components/Timeline';
-import Footer from '../components/Footer';
+import ProductShowcase from "../components/ProductShowcase";
+import SectionPreviews from "../components/SectionPreviews";
+import ProblemStatement from "../components/ProblemStatement";
+import VisionMission from "../components/VisionMission";
+import Timeline from "../components/Timeline";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -22,12 +23,16 @@ const Home = () => {
         <ProductShowcase />
       </FadeIn>
       <FadeIn delay={0.2}>
-        <ImpactStories />
+        <ProblemStatement />
       </FadeIn>
       <FadeIn delay={0.3}>
-        <SectionPreviews />
+        <VisionMission />
       </FadeIn>
-      <FadeIn delay={0.2}>
+      {/* <FadeIn delay={0.3}>
+        <SectionPreviews />
+      </FadeIn> */}
+
+      <FadeIn delay={0.3}>
         <Timeline />
       </FadeIn>
       <Footer />

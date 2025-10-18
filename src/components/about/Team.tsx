@@ -1,5 +1,4 @@
-import React from 'react';
-import { Users } from 'lucide-react';
+import { Users, Linkedin } from "lucide-react";
 
 const Team = () => {
   const teamMembers = [
@@ -7,21 +6,25 @@ const Team = () => {
       name: "Angelo Perera",
       title: "Chef Executive Officer",
       image: "/person2.jpg",
+      linkedin: "https://www.linkedin.com/in/angelo-perera",
     },
     {
       name: "Mihiri Alwis",
       title: "Co Founder",
       image: "/person1.jpg",
+      linkedin: "https://www.linkedin.com/in/mihiri-alwis-18525225b",
     },
     {
       name: "Tharusha Perera",
       title: "Co Founder",
       image: "/person3.jpg",
+      linkedin: "https://www.linkedin.com/in/tharusha-perera-b39b64193",
     },
     {
       name: "Savinda Kommalage",
       title: "Co Founder",
       image: "/person4.jpg",
+      linkedin: "https://www.linkedin.com/in/sdkx",
     },
   ];
 
@@ -42,47 +45,14 @@ const Team = () => {
         </div>
 
         {/* Featured Team Image */}
-        <div className="flex flex-col lg:flex-row gap-8 mb-16 items-center">
-          <div className="lg:w-1/2">
-            <div className="bg-white p-6 rounded-2xl shadow-lg">
-              <div className="rounded-xl overflow-hidden">
-                <img
-                  src="/all.jpg"
-                  alt="BCAN Solutions Team"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="lg:w-1/2 space-y-6">
-            <h3 className="text-2xl font-bold text-gray-800">
-              Driven by Innovation
-            </h3>
-            <p className="text-gray-600">
-              Our diverse team brings together expertise from various
-              backgrounds to deliver cutting-edge solutions. At BCAN Solutions,
-              we believe that our greatest strength lies in our collaborative
-              approach and shared commitment to excellence.
-            </p>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-blue-800 mb-1">4+</h4>
-                <p className="text-sm text-gray-600">
-                  Years Combined Experience
-                </p>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-blue-800 mb-1">24/7</h4>
-                <p className="text-sm text-gray-600">Client Support</p>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-blue-800 mb-1">10+</h4>
-                <p className="text-sm text-gray-600">Successful Projects</p>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-blue-800 mb-1">98%</h4>
-                <p className="text-sm text-gray-600">Client Satisfaction</p>
-              </div>
+        <div className="mb-16">
+          <div className="bg-white p-6 rounded-2xl shadow-lg max-w-4xl mx-auto">
+            <div className="rounded-xl overflow-hidden">
+              <img
+                src="/all.jpg"
+                alt="BCAN Solutions Team"
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>
@@ -90,9 +60,9 @@ const Team = () => {
         {/* Team Members Grid */}
         <h3 className="text-2xl font-bold text-center mb-8">Leadership Team</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teamMembers.map((member, index) => (
+          {teamMembers.map((member) => (
             <div
-              key={index}
+              key={member.name}
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
             >
               <div className="aspect-square overflow-hidden">
@@ -106,7 +76,18 @@ const Team = () => {
                 <h3 className="font-semibold text-lg text-gray-900 mb-1">
                   {member.name}
                 </h3>
-                <p className="text-blue-600 font-medium">{member.title}</p>
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Linkedin size={16} className="text-blue-600" />
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    <p className="text-blue-600 font-medium">{member.title}</p>
+                  </a>
+                </div>
+                
               </div>
             </div>
           ))}

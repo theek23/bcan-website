@@ -5,6 +5,8 @@ import { InquiryType } from "../types/inquiry.types";
 interface ContactFormData {
   name: string;
   email: string;
+  phone: string;
+  countryCode: string;
   subject: string;
   message: string;
 }
@@ -13,6 +15,8 @@ export const useContactForm = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
+    phone: "",
+    countryCode: "+1",
     subject: "",
     message: "",
   });
@@ -21,7 +25,9 @@ export const useContactForm = () => {
   const [success, setSuccess] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -47,6 +53,8 @@ export const useContactForm = () => {
       setFormData({
         name: "",
         email: "",
+        phone: "",
+        countryCode: "+1",
         subject: "",
         message: "",
       });

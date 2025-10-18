@@ -10,15 +10,15 @@ const Products = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      <FadeIn>
+      {/* <FadeIn>
         <ProductsHero />
-      </FadeIn>
+      </FadeIn> */}
       <FadeIn delay={0.2}>
         <ProductGrid />
       </FadeIn>
-      <FadeIn delay={0.3}>
+      {/* <FadeIn delay={0.3}>
         <ResearchServices />
-      </FadeIn>
+      </FadeIn> */}
       <Footer />
     </div>
   );

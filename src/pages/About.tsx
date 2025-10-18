@@ -15,6 +15,9 @@ const About = () => {
       <FadeIn>
         <AboutHero />
       </FadeIn>
+      <FadeIn delay={0.5}>
+        <Team />
+      </FadeIn>
       <FadeIn delay={0.2}>
         <OurStory />
       </FadeIn>
@@ -24,9 +27,7 @@ const About = () => {
       <FadeIn delay={0.4}>
         <CoreValues />
       </FadeIn>
-      <FadeIn delay={0.5}>
-        <Team />
-      </FadeIn>
+      
       <Footer />
     </div>
   );
